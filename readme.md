@@ -122,4 +122,3 @@ Actions:
 - create model (schema and model via mongosee)
 - create controller (logic functionality)
 - create routes (express route)
-
