@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt'
 import nodemailer from 'nodemailer'
 import jwt from 'jsonwebtoken'
 
-const registerUser = async (req, res) => {
+const register = async (req, res) => {
   // get data
   const { name, email, password } = req.body;
   
@@ -56,8 +56,8 @@ const registerUser = async (req, res) => {
       `,
     }
 
-    const data1 = await transporter.sendMail(mailOption)
-    console.log(data1)
+    await transporter.sendMail(mailOption)
+    
     res.status(201).json({
       message: "User registerd successfully",
       success: true
@@ -71,7 +71,7 @@ const registerUser = async (req, res) => {
   }
 }
 
-const verifyUser = async (req, res) => {
+const verify = async (req, res) => {
   const { token } = req.params
   if (!token) {
     return res.status(404).json({
@@ -102,7 +102,7 @@ const verifyUser = async (req, res) => {
 
 }
 
-const logInUser = async (req, res) => {
+const logIn = async (req, res) => {
   const { email, password } = req.body
   
   if (!email || !password) {
@@ -162,4 +162,4 @@ const logInUser = async (req, res) => {
   }
 }
 
-export { registerUser, verifyUser, logInUser };
+export { register, verify, logIn };

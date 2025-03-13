@@ -36,10 +36,6 @@ app.get('/products/:productId', (req, res) => {
   res.send(`Product ID: ${req.params.productId}`);
 });
 
-app.get('/data', (req, res) => {
-  res.json( { message: 'Hello, world!' });
-});
-
 db(); //connect to db
 
 //user routes
