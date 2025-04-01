@@ -1,4 +1,5 @@
-Roadmap for learning Express:
+Express web application for Authentication System
+Node based appn express routing lib and used mongodb
 
 Phase 1: Express.js Fundamentals
 
@@ -64,7 +65,7 @@ Algorithms
     - create user in database
     - create a verification token
     - save token in database
-    - send taken as email to user (nodemailer and mailtrap)
+    - send token as email to user (nodemailer and mailtrap)
     - send success status to user
 
 - Verify User (based on URL which comes in your mail)
