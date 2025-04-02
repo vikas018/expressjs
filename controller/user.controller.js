@@ -128,7 +128,7 @@ const logInUser = async (req, res) => {
 
     const token = await jwt.sign(
       { id: user._id },
-      'shhhh',
+      process.env.JWT_SECRET,
       { expiresIn: '24h' }
     )
 
@@ -162,4 +162,24 @@ const logInUser = async (req, res) => {
   }
 }
 
-export { registerUser, verifyUser, logInUser };
+const profileUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password')
+    if (!user) {
+      return res.status(400).json({
+        message: "User not found."
+      })
+    }
+    return res.status(201).json({
+      success: true,
+      message: "User found."
+    })
+  } catch (error) {
+    console.log('eeerorrr')
+    return res.status(404).json({
+      message: "User not found."
+    })
+  }
+}
+
+export { registerUser, verifyUser, logInUser, profileUser };
